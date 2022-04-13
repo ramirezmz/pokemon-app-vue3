@@ -2,11 +2,25 @@
   <div class="formulario_container flex">
     <form class="formulario_nome_time flex">
       <label for="nome_time">Digite o nome do time: </label>
-      <input class="nome_time_input" type="text" id="nome_time">
+      <input 
+        class="nome_time_input" 
+        v-model="nameTeam"
+        >
     </form>
-      <button class="button_salvar">Salvar</button>
+      <button class="button_salvar" @click="saveTeam(nameTeam)">Salvar</button>
   </div>
 </template>
+<script lang="ts" setup>
+import { useStore } from 'vuex'
+import { ref } from 'vue'
+
+const store = useStore()
+const nameTeam = ref('Roberto')
+
+function saveTeam(value: string) {
+  store.commit('addUserToState', value)
+}
+</script>
 <style>
 .formulario_container {
   justify-content: center;

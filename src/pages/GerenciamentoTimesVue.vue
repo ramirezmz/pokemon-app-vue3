@@ -11,7 +11,7 @@
     <tbody class="tabela_corpo">
       <tr class="tabela_linha">
         <td class="tabela_valor" scope="row">001</td>
-        <td class="tabela_valor">Roberto Team</td>
+        <td class="tabela_valor">{{ allUsers }}</td>
         <td class="tabela_valor">
           <div class="pokemon_selecionados">
             <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/12.svg" alt="pikachu" class="pokemon_imagem">
@@ -25,27 +25,16 @@
           <button class="button_remover">REMOVER</button>
         </td>
       </tr>
-      <tr class="tabela_linha">
-        <td class="tabela_valor" scope="row">001</td>
-        <td class="tabela_valor">Amanda Team</td>
-        <td class="tabela_valor">
-          <div class="pokemon_selecionados">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/25.svg" alt="pikachu" class="pokemon_imagem">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/13.svg" alt="pikachu" class="pokemon_imagem">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/45.svg" alt="pikachu" class="pokemon_imagem">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/200.svg" alt="pikachu" class="pokemon_imagem">
-          </div>
-        </td>
-        <td class="tabela_botoes">
-          <button class="button_editar">EDITAR</button>
-          <button class="button_remover">REMOVER</button>
-        </td>
-      </tr>
     </tbody>
   </table>
 </template>
-<script lang="ts">
-import Vue from 'vue'
+<script lang="ts" setup>
+import { computed } from '@vue/runtime-core'
+import { useStore } from 'vuex'
+
+const store = useStore()
+
+const allUsers = computed(() => store.state.user)
 
 </script>
 

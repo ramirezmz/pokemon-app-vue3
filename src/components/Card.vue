@@ -1,12 +1,13 @@
 <template>
   <div class="container_card">
     <h3 class="container_id_card">
-      #001
+      #0{{id}}
     </h3>
     <div class="container_image_card flex">
-      <img class="image_card" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="pikachu">
+      <img class="image_card"
+      :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`" :alt="`${name}`">
     </div>
-    <h3 class="name_card">Pikachu</h3>
+    <h3 class="name_card">{{name}}</h3>
     <div class="container_buttons flex">
       <button class="button_add">Add</button>
       <button class="button_info">Info</button>
@@ -14,7 +15,22 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+export default{
+  props: {
+    name: {
+      type: String,
+      required: true
+    },
+    id: {
+      type: Number,
+      required: true
+    }
+  }
+}
 
+
+</script>
 <style>
 
 .container_image_card {
