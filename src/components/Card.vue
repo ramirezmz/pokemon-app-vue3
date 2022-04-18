@@ -1,7 +1,7 @@
 <template>
   <div class="container_card">
     <h3 class="container_id_card">
-      #0{{id}}
+      #0{{id +1}}
     </h3>
     <div class="container_image_card flex">
       <img class="image_card"

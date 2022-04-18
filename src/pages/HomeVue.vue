@@ -3,7 +3,7 @@
     <SetTeamName />
     <div
       v-for="(pokemon, index) in pokemons"
-      class="container_cards flex">
+      class="container_cards flex" :key="index">
      {{index += 1}}
     <Card 
       :name="pokemon.name"
@@ -31,3 +31,8 @@ function getId(pokemons:any) {
 }
 
 </script>
+<style>
+.container_cards {
+  float: left;
+}
+</style>
