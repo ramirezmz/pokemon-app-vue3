@@ -3,12 +3,18 @@ import api from '../api'
 
 export default createStore({
    state: {
-      users: [],
+      team: {},
       user: "Robertopaolo",
-      pokemons: []
+      pokemons: [],
+      pokemonSelected: []
    },
    getters: {},
    mutations: {
+      //Get pokemonSelected
+      addPokemons(state, payload) {
+         state.pokemonSelected.push(payload)
+      },
+
       addUserToState(state, payload) {
          state.user = payload
       },
