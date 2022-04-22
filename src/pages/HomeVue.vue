@@ -1,15 +1,18 @@
 <template>
   <body>
-    <SetTeamName />
+    <SetTeamName />    
     <div
       v-for="(pokemon, index) in pokemons"
       class="container_cards flex" :key="index">
-     {{index += 1}}
     <Card 
       :name="pokemon.name"
-      :id="index"
+      :id="getId(pokemon)"
+      :pokemons="pokemons"
       />
+
+      
     </div>
+    {{ store.state.pokemonSelected }}
   </body>
 </template>
 <script setup lang="ts">
@@ -20,19 +23,22 @@ import { ref, onBeforeMount, reactive } from 'vue'
 
 
 const store = useStore()
-let pokemons = reactive({})
+const search = ref('')
+let pokemons = reactive([])
 
-store.dispatch("getAllPokemons", [200, 0])
-
+store.dispatch("getAllPokemons", [100, 0])
 pokemons = store.state.pokemons
 
 function getId(pokemons:any) {
-  return 
+  return pokemons.url.split("/")[6]
 }
 
 </script>
 <style>
 .container_cards {
   float: left;
+}
+.input-search {
+  background-color: aqua;
 }
 </style>

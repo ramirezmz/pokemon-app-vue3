@@ -1,41 +1,48 @@
 <template>
   <div class="container_card">
     <h3 class="container_id_card">
-      #0{{id +1}}
+      #0{{props.id}}
     </h3>
     <div class="container_image_card flex">
       <img class="image_card"
       :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`" :alt="`${name}`">
     </div>
-    <h3 class="name_card">{{name}}</h3>
+    <h3 class="name_card">{{props.name}}</h3>
     <div class="container_buttons flex">
-      <button class="button_add">Add</button>
+      <button 
+        @click="addToPokemonSelected(props.id)"
+        v-if="true"
+        class="button_add">Add</button>
+      <button v-else class="button_remove">Remover</button>
       <button class="button_info">Info</button>
-      <!-- <button class="button_remove">Remover</button> -->
     </div>
   </div>
 </template>
-<script lang="ts">
-export default{
-  props: {
-    name: {
+<script lang="ts" setup>
+import { useStore } from "vuex"
+import {defineProps } from "vue"
+const store = useStore()
+
+const props = defineProps({
+   name: {
       type: String,
-      required: true
+      required: true,
     },
     id: {
-      type: Number,
-      required: true
+      type: String,
+      required: true,
     }
-  }
-}
+})
 
+function addToPokemonSelected(id: any) {
+ store.commit('addPokemons', id)
+}
 
 </script>
 <style>
 
 .container_image_card {
   padding: 1rem;
-    
 }
 
 .container_id_card{
