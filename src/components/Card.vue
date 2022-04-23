@@ -10,19 +10,20 @@
     <h3 class="name_card">{{props.name}}</h3>
     <div class="container_buttons flex">
       <button 
-        @click="addToPokemonSelected(props.id)"
-        v-if="true"
+        @click="[addToPokemonSelected(props.id), checkedStatus()]"
+        v-if="addStatus"
         class="button_add">Add</button>
-      <button v-else class="button_remove">Remover</button>
+      <button @click="[removePokemonsSelected(props.id) ,checkedStatus()]" v-else class="button_remove">Remover</button>
       <button class="button_info">Info</button>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { useStore } from "vuex"
-import {defineProps } from "vue"
+import {defineProps, ref } from "vue"
 const store = useStore()
 
+const addStatus = ref(true)
 const props = defineProps({
    name: {
       type: String,
@@ -36,6 +37,14 @@ const props = defineProps({
 
 function addToPokemonSelected(id: any) {
  store.commit('addPokemons', id)
+}
+
+function removePokemonsSelected(id: any) {
+  store.commit('removePokemons', id)
+}
+
+function checkedStatus() {
+  addStatus.value = !addStatus.value
 }
 
 </script>
