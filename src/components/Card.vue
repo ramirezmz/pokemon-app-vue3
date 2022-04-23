@@ -13,7 +13,10 @@
         @click="[addToPokemonSelected(props.id), checkedStatus()]"
         v-if="addStatus"
         class="button_add">Add</button>
-      <button @click="[removePokemonsSelected(props.id) ,checkedStatus()]" v-else class="button_remove">Remover</button>
+      <button 
+        @click="[checkedStatus()]" 
+        v-else 
+        class="button_remove">Remover</button>
       <button class="button_info">Info</button>
     </div>
   </div>
@@ -37,10 +40,6 @@ const props = defineProps({
 
 function addToPokemonSelected(id: any) {
  store.commit('addPokemons', id)
-}
-
-function removePokemonsSelected(id: any) {
-  store.commit('removePokemons', id)
 }
 
 function checkedStatus() {

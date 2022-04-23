@@ -15,10 +15,6 @@ export default createStore({
          state.pokemonSelected.push(payload)
       },
 
-      removePokemons(state, payload) {
-         state.pokemonSelected.splice(payload, 1)
-      },
-
       addUserToState(state, payload) {
          state.user = payload
       },
