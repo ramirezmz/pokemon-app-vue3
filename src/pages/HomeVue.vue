@@ -1,18 +1,18 @@
 <template>
   <body>
-    <SetTeamName />    
-    <div
-      v-for="(pokemon, index) in pokemons"
-      class="container_cards flex" :key="index">
-    <Card 
-      :name="pokemon.name"
-      :id="getId(pokemon)"
-      :pokemons="pokemons"
-      />
-
-      
+    <SetTeamName />
+        {{ store.state.pokemonSelected }}
+    <div class="container">
+      <div
+        v-for="(pokemon, index) in pokemons"
+        class="container_cards flex" :key="index">
+        <Card 
+        :name="pokemon.name"
+        :id="getId(pokemon)"
+        :pokemons="pokemons"
+        />
     </div>
-    {{ store.state.pokemonSelected }}
+    </div>
   </body>
 </template>
 <script setup lang="ts">
@@ -26,7 +26,7 @@ const store = useStore()
 const search = ref('')
 let pokemons = reactive([])
 
-store.dispatch("getAllPokemons", [100, 0])
+store.dispatch("getAllPokemons", [10, 0])
 pokemons = store.state.pokemons
 
 function getId(pokemons:any) {
@@ -37,6 +37,11 @@ function getId(pokemons:any) {
 <style>
 .container_cards {
   float: left;
+  /* margin: auto; */
+}
+
+.container {
+  margin: auto;
 }
 .input-search {
   background-color: aqua;

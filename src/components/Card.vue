@@ -3,7 +3,7 @@
     <h3 class="container_id_card">
       #0{{props.id}}
     </h3>
-    <div class="container_image_card flex">
+    <div class="container_image_card flex" @click="detailsPokemon(props.id)">
       <img class="image_card"
       :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`" :alt="`${name}`">
     </div>
@@ -17,16 +17,40 @@
         @click="[checkedStatus()]" 
         v-else 
         class="button_remove">Remover</button>
-      <button class="button_info">Info</button>
+      
+      <button class="button_info"
+        @click="() => TogglePopup('buttonTrigger')"
+        >Info</button>
+        <Popup 
+          v-if="popupTriggers.buttonTrigger"
+          :TogglePopup="() => TogglePopup('buttonTrigger')"
+          >
+          <DetailPokemon 
+            :id="props.id"
+            :name="props.name"
+            
+            />
+        </Popup>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { useStore } from "vuex"
-import {defineProps, ref } from "vue"
-const store = useStore()
+import {computed, defineProps, ref } from "vue"
+import Popup from "./Popup.vue"
+import DetailPokemon from "./DetailPokemon.vue";
 
+const store = useStore()
 const addStatus = ref(true)
+
+const popupTriggers = ref({
+  buttonTrigger: false
+})
+
+const TogglePopup = (trigger: String) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
+}
+
 const props = defineProps({
    name: {
       type: String,
@@ -46,9 +70,12 @@ function checkedStatus() {
   addStatus.value = !addStatus.value
 }
 
+function detailsButton(id: any){[
+  console.log(id)
+]}
+
 </script>
 <style>
-
 .container_image_card {
   padding: 1rem;
 }
@@ -66,7 +93,7 @@ function checkedStatus() {
 .container_card {
   border: 1px solid #788896;
   border-radius: 0.5rem;
-  width: 10rem;
+  width: 13rem;
   height: 16rem;
   background-color: #E3E6E9;
   margin: 1rem;

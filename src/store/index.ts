@@ -6,6 +6,7 @@ export default createStore({
       team: {},
       user: "Robertopaolo",
       pokemons: [],
+      // detailsPokemons: [],
       pokemonSelected: []
    },
    getters: {},
@@ -20,13 +21,20 @@ export default createStore({
       },
       setPokemons(state, payload) {
          Object.assign(state.pokemons, payload)
-      }
+      },
+      // setDetailsPokemons(state, payload: Object) {
+      //    state.detailsPokemons.push(payload)
+      // }
    },
    actions: {
       getAllPokemons(context, [limit, offset]) {
          api.get(`pokemon?limit=${limit}&offset=${offset}`)
          .then((response: object) => context.commit("setPokemons", response.data.results))
-      }
+      },
+      // getDetailsPokemons(context, pokemonId) {
+      //    api.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+      //    .then((response) => context.commit("setDetailsPokemons", response.data))
+      // }
    },
    modules: {}
 })

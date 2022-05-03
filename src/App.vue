@@ -29,10 +29,4 @@ import HomeVue from './pages/HomeVue.vue';
   flex-direction: column;
 }
 
-.container_cards {
-  flex-wrap: wrap;
-  margin: 2rem;
-}
-
-
 </style>
