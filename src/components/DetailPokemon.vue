@@ -6,7 +6,7 @@
                   <h2 class="nome">{{props.name}}</h2>
                   <span>#{{props.id}}</span>
                </div>
-               <span class="tipo" >Eletricidade</span>
+               <span class="tipo" >{{props.detailPokemon}}</span>
 
                <div class="cartao-imagem">
                   <img src="" class="container_image_detalhe"/>
@@ -37,8 +37,10 @@
    </div>
 </template>
 <script lang="ts" setup>
-import { defineProps } from 'vue'
+import { computed, defineProps, onMounted, watch } from 'vue'
+import axios from 'axios'
 
+let selected_pokemon = computed({})
 const props = defineProps({
    id: {
       type: String,
@@ -47,9 +49,23 @@ const props = defineProps({
     name: {
       type: String,
       required: true,
-    },
+    }
 })
 
+onMounted(() => {
+   showPokemon(props.id)
+})
+
+watch( props, (newValue, oldValue) => {
+   showPokemon(props.id)
+})
+
+function showPokemon (id: any) {
+   axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
+      selected_pokemon = response.data
+      console.log(selected_pokemon)
+   })
+}
 </script>
 <style scoped>
 

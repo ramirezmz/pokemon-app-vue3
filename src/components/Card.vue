@@ -28,7 +28,6 @@
           <DetailPokemon 
             :id="props.id"
             :name="props.name"
-            
             />
         </Popup>
     </div>
@@ -36,13 +35,12 @@
 </template>
 <script lang="ts" setup>
 import { useStore } from "vuex"
-import {computed, defineProps, ref } from "vue"
+import { computed, defineProps, ref, watch } from "vue"
 import Popup from "./Popup.vue"
 import DetailPokemon from "./DetailPokemon.vue";
 
 const store = useStore()
 const addStatus = ref(true)
-
 const popupTriggers = ref({
   buttonTrigger: false
 })
@@ -50,7 +48,6 @@ const popupTriggers = ref({
 const TogglePopup = (trigger: String) => {
   popupTriggers.value[trigger] = !popupTriggers.value[trigger]
 }
-
 const props = defineProps({
    name: {
       type: String,
