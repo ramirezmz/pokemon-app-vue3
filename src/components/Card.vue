@@ -38,12 +38,9 @@ import { useStore } from "vuex"
 import { computed, defineProps, ref, watch } from "vue"
 import Popup from "./Popup.vue"
 import DetailPokemon from "./DetailPokemon.vue"
-import axios from "axios"
-
 
 const store = useStore()
 const addStatus = ref(true)
-let selected_pokemon = computed({})
 const popupTriggers = ref({
   buttonTrigger: false
 })
@@ -60,11 +57,10 @@ const props = defineProps({
       type: String,
       required: true,
     },
-
-})
-
-watch( popupTriggers.value, (newValue, oldValue) => {
-   showPokemon(props.id)
+    details: {
+      details: Array,
+      required: true
+    }
 })
 
 function showPokemon (id: any) {
@@ -78,10 +74,6 @@ function addToPokemonSelected(id: any) {
 function checkedStatus() {
   addStatus.value = !addStatus.value
 }
-
-function detailsButton(id: any){[
-  console.log(id)
-]}
 
 </script>
 <style>

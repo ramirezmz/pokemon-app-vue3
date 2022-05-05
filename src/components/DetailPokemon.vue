@@ -1,15 +1,18 @@
 <template>
    <div>
-      <div class="cartao-pokemon aberto electric" id="cartao-pikachu">
+      <div class="cartao-pokemon aberto " :class="store.state.detailPokemon[props.id - 1].types[0].type.name" id="cartao-pikachu">
             <div class="cartao-topo">
                <div class="detalhes">
                   <h2 class="nome">{{props.name}}</h2>
                   <span>#{{props.id}}</span>
                </div>
-               <span class="tipo" >{{props.detailPokemon}}</span>
+               <span class="tipo" >{{store.state.detailPokemon[props.id - 1].types[0].type.name}}</span>
 
                <div class="cartao-imagem">
-                  <img src="" class="container_image_detalhe"/>
+                  <img 
+                    :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.id}.svg`" 
+                    :alt="`${props.name}`"
+                    class="container_image_detalhe"/>
                </div>
             </div>
 
@@ -18,18 +21,19 @@
                   <h3>Status</h3>
 
                   <ul>
-                  <li>HP: 001</li>
-                  <li>Ataque: 001</li>
-                  <li>Defesa: 001</li>
-                  <li>Especial: 001</li>
-                  <li>Velocidade: 001</li>
+                  <li>HP: 0{{store.state.detailPokemon[props.id - 1].stats[0].base_stat}}</li>
+                  <li>Ataque: 0{{store.state.detailPokemon[props.id - 1].stats[1].base_stat}}</li>
+                  <li>Defesa: 0{{store.state.detailPokemon[props.id - 1].stats[2].base_stat}}</li>
+                  <li>Especial: 0{{store.state.detailPokemon[props.id - 1].stats[3].base_stat}}</li>
+                  <li>Velocidade: 0{{store.state.detailPokemon[props.id - 1].stats[5].base_stat}}</li>
                   </ul>
                </div>
 
                <div class="habilidades">
                   <h3>Habilidades</h3>
                   <ul>
-                     <li>props.abilities</li>
+                     <li>{{store.state.detailPokemon[props.id - 1].abilities[0].ability.name}}</li>
+                     <li>{{store.state.detailPokemon[props.id - 1].abilities[1].ability.name}}</li>
                   </ul>
             </div>
          </div>
@@ -38,17 +42,23 @@
 </template>
 <script lang="ts" setup>
 import { computed, defineProps, onMounted } from 'vue'
+import { useStore } from 'vuex';
 
 const props = defineProps({
    id: {
       type: String,
-      required: true,
+      required: false,
     },
     name: {
       type: String,
-      required: true,
+      required: false,
+    },
+    abilities: {
+      type: Object,
+      required: false
     }
 })
+const store = useStore()
 
 </script>
 <style scoped>
