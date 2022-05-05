@@ -12,12 +12,9 @@
       <tr class="tabela_linha">
         <td class="tabela_valor" scope="row">001</td>
         <td class="tabela_valor">{{ allUsers }}</td>
-        <td class="tabela_valor">
-          <div class="pokemon_selecionados">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/12.svg" alt="pikachu" class="pokemon_imagem">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/10.svg" alt="pikachu" class="pokemon_imagem">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/50.svg" alt="pikachu" class="pokemon_imagem">
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/100.svg" alt="pikachu" class="pokemon_imagem">
+        <td class="tabela_valor flex">
+          <div class="pokemon_selecionados flex" v-for="(pokemon, index) in pokemonsChoosed" :key="index">
+            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon}.svg`" alt="pikachu" class="pokemon_imagem">
           </div>
         </td>
         <td class="tabela_botoes">
@@ -33,9 +30,9 @@ import { computed } from '@vue/runtime-core'
 import { useStore } from 'vuex'
 
 const store = useStore()
-
+const pokemonsChoosed = store.state.pokemonSelected
 const allUsers = computed(() => store.state.user)
-
+console.log(pokemonsChoosed);
 </script>
 
 <style>
