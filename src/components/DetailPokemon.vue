@@ -29,7 +29,7 @@
                <div class="habilidades">
                   <h3>Habilidades</h3>
                   <ul>
-                     <li>ASDAss</li>
+                     <li>props.abilities</li>
                   </ul>
             </div>
          </div>
@@ -37,10 +37,8 @@
    </div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, onMounted, watch } from 'vue'
-import axios from 'axios'
+import { computed, defineProps, onMounted } from 'vue'
 
-let selected_pokemon = computed({})
 const props = defineProps({
    id: {
       type: String,
@@ -52,20 +50,6 @@ const props = defineProps({
     }
 })
 
-onMounted(() => {
-   showPokemon(props.id)
-})
-
-watch( props, (newValue, oldValue) => {
-   showPokemon(props.id)
-})
-
-function showPokemon (id: any) {
-   axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`).then((response) => {
-      selected_pokemon = response.data
-      console.log(selected_pokemon)
-   })
-}
 </script>
 <style scoped>
 
