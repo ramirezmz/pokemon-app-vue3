@@ -3,27 +3,40 @@ import api from '../api'
 
 export default createStore({
    state: {
-      team: {},
-      user: "Robertopaolo",
+      teamList: [],
+      team: {
+         id: "",
+         name: "",
+         pokemonsChoosed: []
+      },
       pokemons: [],
-      detailPokemon: [],
-      pokemonSelected: []
+      detailPokemon: []
    },
    getters: {},
    mutations: {
-      //Get pokemonSelected
       addPokemons(state, payload) {
-         state.pokemonSelected.push(payload)
+         state.team.pokemonsChoosed.push(payload)
       },
-
       addUserToState(state, payload) {
-         state.user = payload
+         state.team.name = payload
       },
       setPokemons(state, payload) {
          Object.assign(state.pokemons, payload)
       },
       setDetailsPokemons(state, payload: any) {
          state.detailPokemon.push(payload)
+      },
+      generateIdTeam(state: any):void {
+         state.team.id = Math.floor(Math.random() * 100)
+      },
+      fullTeam(state:any, payload:any):void {
+         state.teamList.push(payload)
+      },
+      cleanTeam(state: any): void {
+         state.team = {
+            id: "",
+            name: "",
+            pokemonsChoosed: []}
       }
    },
    actions: {
@@ -34,6 +47,9 @@ export default createStore({
       getDetailsPokemons(context, pokemonId) {
          api.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
          .then((response) => context.commit("setDetailsPokemons", response.data))
+      },
+      getEventId(context) {
+         context.commit('generateIdTeam')
       }
    },
    modules: {}

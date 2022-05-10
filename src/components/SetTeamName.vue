@@ -7,18 +7,30 @@
         v-model="nameTeam"
         >
     </form>
-      <button class="button_salvar" @click="saveTeam(nameTeam)">Salvar</button>
+      <button class="button_salvar" @click="[saveTeam(nameTeam)]">Salvar</button>
   </div>
 </template>
 <script lang="ts" setup>
 import { useStore } from 'vuex'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const store = useStore()
-const nameTeam = ref('Roberto')
+const nameTeam = ref('')
 
 function saveTeam(value: string) {
-  store.commit('addUserToState', value)
+  if(value == ''){
+    window.alert('Você precisa colocar um nome ao seu time...')
+  } 
+  else if(store.state.team.pokemonsChoosed.length === 0) {
+    window.alert('Pokemons 0, escolhe pelo menos 1')
+  }
+  else {
+    store.commit('addUserToState', value)
+    store.dispatch('getEventId')
+    store.commit('fullTeam', store.state.team)
+
+  }
+  store.commit('cleanTeam')
 }
 </script>
 <style>

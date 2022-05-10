@@ -1,7 +1,7 @@
 <template>
   <body>
     <SetTeamName />
-        {{ store.state.pokemonSelected }}
+        <!-- {{ store.state.pokemonSelected }} -->
     <div class="">
       <div
         v-for="(pokemon, index) in pokemons"

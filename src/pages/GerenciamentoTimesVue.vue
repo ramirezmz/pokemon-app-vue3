@@ -8,13 +8,14 @@
         <td class="tabela_categoria" scope="col">OPCOES</td>
       </tr>
     </thead>
-    <tbody class="tabela_corpo">
+    <tbody class="tabela_corpo" v-for="(user, index) in users" :key="index">
       <tr class="tabela_linha">
-        <td class="tabela_valor" scope="row">001</td>
-        <td class="tabela_valor">{{ allUsers }}</td>
+        <td class="tabela_valor" scope="row">{{index + 1}}</td>
+        <td class="tabela_valor">{{ user.name }}</td>
         <td class="tabela_valor flex">
-          <div class="pokemon_selecionados flex" v-for="(pokemon, index) in pokemonsChoosed" :key="index">
-            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon}.svg`" alt="pikachu" class="pokemon_imagem">
+          <div class="pokemon_selecionados flex" >
+            {{ users[index].pokemonsChoosed }}
+            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${1}.svg`" alt="pikachu" class="pokemon_imagem">
           </div>
         </td>
         <td class="tabela_botoes">
@@ -30,9 +31,7 @@ import { computed } from '@vue/runtime-core'
 import { useStore } from 'vuex'
 
 const store = useStore()
-const pokemonsChoosed = store.state.pokemonSelected
-const allUsers = computed(() => store.state.user)
-console.log(pokemonsChoosed);
+const users = computed(() => store.state.teamList)
 </script>
 
 <style>
