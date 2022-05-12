@@ -13,9 +13,10 @@
 <script lang="ts" setup>
 import { useStore } from 'vuex'
 import { computed, ref } from 'vue'
-
+import { useRouter } from 'vue-router'
 const store = useStore()
 const nameTeam = ref('')
+const router = useRouter()
 
 function saveTeam(value: string) {
   if(value == ''){
@@ -28,7 +29,7 @@ function saveTeam(value: string) {
     store.commit('addUserToState', value)
     store.dispatch('getEventId')
     store.commit('fullTeam', store.state.team)
-
+    router.push('gerenciamento')
   }
   store.commit('cleanTeam')
 }

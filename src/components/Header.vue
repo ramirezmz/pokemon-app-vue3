@@ -1,8 +1,7 @@
 <template>
   <header class="cabecalho">
     <h1 class="titulo_principal">Pokemon App</h1>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/gerenciamento">Lista de Times</router-link>
+    <router-link to="/">Home</router-link>
   </header>
 </template>
 <style>
