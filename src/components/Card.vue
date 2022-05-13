@@ -3,18 +3,18 @@
     <h3 class="container_id_card">
       #0{{props.id}}
     </h3>
-    <div class="container_image_card flex" @click="detailsPokemon(props.id)">
+    <div class="container_image_card flex">
       <img class="image_card"
-      :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`" :alt="`${name}`">
+      :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.id}.svg`" :alt="`${props.name}`">
     </div>
     <h3 class="name_card">{{props.name}}</h3>
     <div class="container_buttons flex">
-      <button 
-        @click="[addToPokemonSelected(props.id), checkedStatus()]"
+      <button
+        @click="[addToPokemonSelected(props.name), checkedStatus()]"
         v-if="addStatus"
         class="button_add">Add</button>
-      <button 
-        @click="[checkedStatus()]" 
+      <button
+        @click="[checkedStatus()]"
         v-else 
         class="button_remove">Remover</button>
       
@@ -38,6 +38,7 @@ import { useStore } from "vuex"
 import { computed, defineProps, ref, watch } from "vue"
 import Popup from "./Popup.vue"
 import DetailPokemon from "./DetailPokemon.vue"
+import axios from "axios"
 
 const store = useStore()
 const addStatus = ref(true)
@@ -56,10 +57,6 @@ const props = defineProps({
     id: {
       type: String,
       required: true,
-    },
-    details: {
-      details: Array,
-      required: true
     }
 })
 
@@ -67,8 +64,8 @@ function showPokemon (id: any) {
    store.dispatch('getDetailsPokemons', id)
 }
 
-function addToPokemonSelected(id: any) {
- store.commit('addPokemons', id)
+function addToPokemonSelected(name: any) {
+  store.commit('addPokemons', name)
 }
 
 function checkedStatus() {

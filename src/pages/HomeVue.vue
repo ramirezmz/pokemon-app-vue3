@@ -1,7 +1,7 @@
 <template>
   <body>
     <SetTeamName />
-        <!-- {{ store.state.pokemonSelected }} -->
+        {{ store.state.team.pokemonsChoosed }}
     <div class="">
       <div
         v-for="(pokemon, index) in pokemons"
@@ -27,7 +27,7 @@ import axios from 'axios';
 const store = useStore()
 let pokemons = reactive([])
 
-store.dispatch("getAllPokemons", [10, 0])
+store.dispatch("getAllPokemons", [50, 0])
 pokemons = store.state.pokemons
 
 function getId(pokemons:any) {
