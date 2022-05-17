@@ -14,16 +14,16 @@ export default createStore({
    },
    getters: {},
    mutations: {
-      addPokemons(state, payload) {
+      addPokemons(state: any, payload: any):any  {
          state.team.pokemonsChoosed.push(payload)
       },
-      addUserToState(state, payload) {
+      addUserToState(state, payload):any  {
          state.team.name = payload
       },
-      setPokemons(state, payload) {
+      setPokemons(state, payload):void  {
          Object.assign(state.pokemons, payload)
       },
-      setDetailsPokemons(state, payload: any) {
+      setDetailsPokemons(state, payload: any):void  {
          state.detailPokemon.push(payload)
       },
       generateIdTeam(state: any):void {
@@ -40,9 +40,9 @@ export default createStore({
       }
    },
    actions: {
-      getAllPokemons(context, [limit, offset]) {
+      getAllPokemons(context, [limit, offset]):void {
          api.get(`pokemon?limit=${limit}&offset=${offset}`)
-         .then((response: object) => context.commit("setPokemons", response.data.results))
+         .then((response: any) => context.commit("setPokemons", response.data.results))
       },
       getDetailsPokemons(context, pokemonId) {
          api.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
