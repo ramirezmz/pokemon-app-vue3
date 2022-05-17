@@ -13,7 +13,7 @@ Básicamente ele é um CRUD que consome uma API do PokeAPI
 
 ## Esboço do projeto
 
-https://whimsical.com/fluxo-de-app-Abc9Z7K4xG5YLAS2T54tsH
+Da uma olhada no esboço [aqui](https://whimsical.com/fluxo-de-app-Abc9Z7K4xG5YLAS2T54tsH)
 
 - Uma das coisas que aprendi e levarei para meus proximos projetos é a planificação dos dados para cada componente (props e emits).
 ![fluxo_dados](./src/assets/fluxo_app_img.png)
