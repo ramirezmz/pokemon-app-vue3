@@ -9,10 +9,10 @@
       </div>
    </div>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
 import {defineProps} from 'vue'
 
-const props = defineProps({
+const props: any = defineProps({
    TogglePopup: {
       required: true 
    }

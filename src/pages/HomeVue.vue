@@ -25,7 +25,7 @@ import DetailPokemon from '../components/DetailPokemon.vue';
 import axios from 'axios';
 
 const store = useStore()
-let pokemons = reactive([])
+let pokemons: any = reactive([])
 
 store.dispatch("getAllPokemons", [50, 0])
 pokemons = store.state.pokemons

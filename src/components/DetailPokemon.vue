@@ -44,7 +44,7 @@
 import { computed, defineProps, onMounted } from 'vue'
 import { useStore } from 'vuex';
 
-const props = defineProps({
+const props: any = defineProps({
    id: {
       type: String,
       required: false,

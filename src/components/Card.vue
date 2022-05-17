@@ -42,14 +42,14 @@ import axios from "axios"
 
 const store = useStore()
 const addStatus = ref(true)
-const popupTriggers = ref({
+const popupTriggers: any = ref({
   buttonTrigger: false
 })
 
-const TogglePopup = (trigger: String) => {
+const TogglePopup: any = (trigger: string): any => {
   popupTriggers.value[trigger] = !popupTriggers.value[trigger]
 }
-const props = defineProps({
+const props: any = defineProps({
    name: {
       type: String,
       required: true,
