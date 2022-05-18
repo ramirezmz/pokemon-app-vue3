@@ -36,7 +36,7 @@ import { useStore } from 'vuex'
 const store = useStore()
 const users = computed(() => store.state.teamList)
 
-function deleteSavedTeam(user: object) {
+function deleteSavedTeam(user: number) {
   store.commit('deleteSavedTeam', user)
 }
 </script>
