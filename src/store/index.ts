@@ -40,7 +40,10 @@ export default createStore({
       },
       deleteSavedTeam(state, payload) {
          state.teamList.splice(payload, 1)
-      }
+      },
+      // deletePokemonTeamSelected(state, payload) {
+      //    state.team.pokemonsChoosed.splice
+      // }
    },
    actions: {
       getAllPokemons(context, [limit, offset]):void {

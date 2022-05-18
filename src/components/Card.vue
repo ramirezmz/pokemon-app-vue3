@@ -14,7 +14,7 @@
         v-if="addStatus"
         class="button_add">Add</button>
       <button
-        @click="[checkedStatus()]"
+        @click="[removePokemonSelected(props.id), checkedStatus()]"
         v-else 
         class="button_remove">Remover</button>
       
@@ -72,6 +72,9 @@ function checkedStatus() {
   addStatus.value = !addStatus.value
 }
 
+function removePokemonSelected(id:number) {
+  console.log(store.state.team.pokemonsChoosed, id)
+}
 </script>
 <style>
 .container_image_card {
