@@ -37,6 +37,9 @@ export default createStore({
             id: "",
             name: "",
             pokemonsChoosed: []}
+      },
+      deleteSavedTeam(state, payload) {
+         state.teamList.splice(payload, 1)
       }
    },
    actions: {

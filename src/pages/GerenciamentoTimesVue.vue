@@ -13,14 +13,17 @@
         <td class="tabela_valor" scope="row">{{index + 1}}</td>
         <td class="tabela_valor">{{ user.name }}</td>
         <td class="tabela_valor flex">
-          <div class="pokemon_selecionados flex" >
-            {{ users[index].pokemonsChoosed }}
-            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${1}.svg`" alt="pikachu" class="pokemon_imagem">
+          <div class="pokemon_selecionados flex">
+            {{ user }}
+            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${user.pokemonsChoosed[0].url.split('/')[6]}.svg`" alt="user.pokemonsChoosed[0].name" class="pokemon_imagem">
           </div>
         </td>
         <td class="tabela_botoes">
           <button class="button_editar">EDITAR</button>
-          <button class="button_remover">REMOVER</button>
+          <button 
+            class="button_remover"
+            @click="deleteSavedTeam(index)"
+          >REMOVER</button>
         </td>
       </tr>
     </tbody>
@@ -32,6 +35,10 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 const users = computed(() => store.state.teamList)
+
+function deleteSavedTeam(user: object) {
+  store.commit('deleteSavedTeam', user)
+}
 </script>
 
 <style>

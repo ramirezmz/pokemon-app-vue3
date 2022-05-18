@@ -10,7 +10,7 @@
     <h3 class="name_card">{{props.name}}</h3>
     <div class="container_buttons flex">
       <button
-        @click="[addToPokemonSelected(props.name), checkedStatus()]"
+        @click="[addToPokemonSelected(props.id), checkedStatus()]"
         v-if="addStatus"
         class="button_add">Add</button>
       <button
@@ -64,8 +64,8 @@ function showPokemon (id: any) {
    store.dispatch('getDetailsPokemons', id)
 }
 
-function addToPokemonSelected(name: any) {
-  store.commit('addPokemons', name)
+function addToPokemonSelected(id: any) {
+  store.commit('addPokemons', store.state.pokemons[id])
 }
 
 function checkedStatus() {
