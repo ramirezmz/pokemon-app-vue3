@@ -2,7 +2,6 @@
    <div class="popup">
       <div class="popup_inner">
          <slot />
-         
          <button class="button_remove" @click="props.TogglePopup()">
             Close
          </button>

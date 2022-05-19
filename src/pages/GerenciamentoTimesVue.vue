@@ -13,9 +13,8 @@
         <td class="tabela_valor" scope="row">{{index + 1}}</td>
         <td class="tabela_valor">{{ user.name }}</td>
         <td class="tabela_valor flex">
-          <div class="pokemon_selecionados flex">
-            {{ user }}
-            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${user.pokemonsChoosed[0].url.split('/')[6]}.svg`" alt="user.pokemonsChoosed[0].name" class="pokemon_imagem">
+          <div class="pokemon_selecionados flex" v-for="(pokemons, id) in user.pokemonsChoosed" :key="id">
+            <img :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemons.url.split('/')[6]}.svg`" alt="user.pokemonsChoosed[0].name" class="pokemon_imagem">
           </div>
         </td>
         <td class="tabela_botoes">
