@@ -1,7 +1,8 @@
 <template>
   <header class="cabecalho">
-    <h1 class="titulo_principal">Pokemon App</h1>
-    <router-link to="/">Home</router-link>
+    <router-link to="/">
+      <img class="titulo_pokemon_img" src="../assets/pokemon_name.png" />
+    </router-link>
   </header>
 </template>
 <style>
@@ -15,4 +16,7 @@
   color: #fff;
 }
 
+.titulo_pokemon_img {
+  width: 12rem;
+}
 </style>
