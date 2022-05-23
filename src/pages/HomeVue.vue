@@ -1,7 +1,10 @@
 <template>
   <body>
-    <SetTeamName />
-    <div class="">
+    <div class="container_head flex">
+      <SetTeamName />
+      <PokemonFace />
+    </div>
+    <div class="container">
       <div
         v-for="(pokemon, index) in pokemons"
         class="container_cards" :key="index">
@@ -10,6 +13,7 @@
         :id="getId(pokemon)"
         :pokemons="pokemons"
         :details="getDetailsData(getId(pokemon))"
+        :index="index"
         />
       </div>
     </div>
@@ -22,6 +26,7 @@ import { useStore } from 'vuex'
 import { ref, onBeforeMount, reactive } from 'vue'
 import DetailPokemon from '../components/DetailPokemon.vue';
 import axios from 'axios';
+import PokemonFace from '../components/PokemonFace.vue';
 
 const store = useStore()
 let pokemons: any = reactive([])
@@ -40,7 +45,6 @@ function getDetailsData(id: Number) {
 <style>
 .container_cards {
   float: left;
-  /* margin: auto; */
 }
 
 .container {
