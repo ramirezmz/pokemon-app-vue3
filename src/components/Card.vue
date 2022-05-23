@@ -14,7 +14,7 @@
         v-if="addStatus"
         class="button_add">Add</button>
       <button
-        @click="[removePokemonSelected(props.id), checkedStatus()]"
+        @click="[removePokemonSelected(props.index), checkedStatus()]"
         v-else 
         class="button_remove">Remover</button>
       
@@ -57,6 +57,10 @@ const props: any = defineProps({
     id: {
       type: String,
       required: true,
+    },
+    index: {
+      type: Number,
+      required: true
     }
 })
 
@@ -65,7 +69,7 @@ function showPokemon (id: any) {
 }
 
 function addToPokemonSelected(id: any) {
-  store.commit('addPokemons', store.state.pokemons[id])
+  store.commit('addPokemons', store.state.pokemons[id -1])
 }
 
 function checkedStatus() {
@@ -73,7 +77,7 @@ function checkedStatus() {
 }
 
 function removePokemonSelected(id:number) {
-  console.log(store.state.team.pokemonsChoosed, id)
+  store.commit('deletePokemonTeamSelected', id)
 }
 </script>
 <style>

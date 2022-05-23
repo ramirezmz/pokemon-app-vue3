@@ -1,5 +1,10 @@
 import { createStore } from 'vuex'
 import api from '../api'
+import VuexPersistence from 'vuex-persist'
+
+const vuexLocal = new VuexPersistence({
+   storage: window.localStorage
+})
 
 export default createStore({
    state: {
@@ -41,9 +46,15 @@ export default createStore({
       deleteSavedTeam(state, payload) {
          state.teamList.splice(payload, 1)
       },
-      // deletePokemonTeamSelected(state, payload) {
-      //    state.team.pokemonsChoosed.splice
-      // }
+      deletePokemonTeamSelected(state, payload) {
+         console.log(state.team.pokemonsChoosed.splice(payload, 1))
+         console.log(payload);
+         console.log(state.team.pokemonsChoosed);
+      },
+      editTeam(state, teamId) {
+         Object.assign(state.team, state.teamList[teamId])
+         console.log(state.team);
+      }
    },
    actions: {
       getAllPokemons(context, [limit, offset]):void {
@@ -58,5 +69,5 @@ export default createStore({
          context.commit('generateIdTeam')
       }
    },
-   modules: {}
+   modules: {},
 })

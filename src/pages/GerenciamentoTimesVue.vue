@@ -18,7 +18,12 @@
           </div>
         </td>
         <td class="tabela_botoes">
-          <button class="button_editar">EDITAR</button>
+          <router-link to="/">
+          <button 
+            class="button_editar"
+            @click="editTeam(index)">EDITAR
+          </button>
+          </router-link>
           <button 
             class="button_remover"
             @click="deleteSavedTeam(index)"
@@ -35,9 +40,11 @@ import { useStore } from 'vuex'
 const store = useStore()
 const users = computed(() => store.state.teamList)
 
-function deleteSavedTeam(user: number) {
+const deleteSavedTeam = (user: number) => {
   store.commit('deleteSavedTeam', user)
 }
+
+const editTeam = (teamId: any) => store.commit('editTeam', teamId)
 </script>
 
 <style>
