@@ -14,15 +14,15 @@
         v-if="addStatus" class="button_add">Add</button>
       <button @click="removePokemonSelected(1)"
         v-else class="button_remove">Remover</button>
-
-      <button class="button_info" @click="() => TogglePopup('buttonTrigger')">
+      <button class="button_info" @click="TogglePopup('buttonTrigger', props.id)">
         Info
       </button>
       <Popup
         v-if="popupTriggers.buttonTrigger"
-        :TogglePopup="() => TogglePopup('buttonTrigger')"
-      >
-        <DetailPokemon :id="props.id" :name="props.name" />
+        :TogglePopup="() => TogglePopup('buttonTrigger')">
+        <DetailPokemon
+          :id="props.id"
+          :name="props.name"/>
       </Popup>
     </div>
   </div>
@@ -50,8 +50,10 @@ const popupTriggers: any = ref({
   buttonTrigger: false,
 });
 
-const TogglePopup = (trigger: string) => {
+const TogglePopup = (trigger: string, id: number) => {
   popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+  const detailPokemon = store.state.detailPokemon[id - 1]
+  console.log(detailPokemon)
 };
 
 const showPokemon = (id: any) => {

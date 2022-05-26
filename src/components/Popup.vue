@@ -1,8 +1,10 @@
 <template>
-  <div class="popup">
+  <div class="popup flex">
     <div class="popup_inner">
       <slot />
-      <button class="button_remove" @click="props.TogglePopup()">Close</button>
+      <div class="container_button">
+        <button class="button_remove" @click="props.TogglePopup()">Close</button>
+      </div>
     </div>
   </div>
 </template>
@@ -31,5 +33,11 @@ const props: any = defineProps({
 .popup_inner {
   background: #fff;
   padding: 32px;
+  border-radius: 15px;
+}
+
+.container_button {
+  text-align: center;
+  padding-top: 8px;
 }
 </style>

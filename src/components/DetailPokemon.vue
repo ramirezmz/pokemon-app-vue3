@@ -78,9 +78,10 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { computed, defineProps, onMounted } from "vue";
+import { defineProps } from "vue";
 import { useStore } from "vuex";
 
+const store = useStore();
 const props: any = defineProps({
   id: {
     type: String,
@@ -89,23 +90,18 @@ const props: any = defineProps({
   name: {
     type: String,
     required: false,
-  },
-  abilities: {
-    type: Object,
-    required: false,
-  },
+  }
 });
-const store = useStore();
 </script>
 <style scoped>
 .cartao-pokemon {
   display: none;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  border-radius: 10px;
+  border-radius: 30px;
 }
 
 .cartao-pokemon .cartao-topo {
-  padding: 30px 40px 0;
+  padding: 15px 25px 0;
 }
 
 .cartao-pokemon .nome {
@@ -132,8 +128,8 @@ const store = useStore();
 }
 
 .cartao-pokemon .cartao-imagem {
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 250px;
 }
 
 .cartao-imagem {
