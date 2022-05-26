@@ -1,83 +1,87 @@
 <template>
   <div class="container_card">
-    <h3 class="container_id_card">
-      #0{{props.id}}
-    </h3>
+    <h3 class="container_id_card">#0{{ props.id }}</h3>
     <div class="container_image_card flex">
-      <img class="image_card"
-      :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.id}.svg`" :alt="`${props.name}`">
+      <img
+        class="image_card"
+        :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${props.id}.svg`"
+        :alt="`${props.name}`"
+      />
     </div>
-    <h3 class="name_card">{{props.name}}</h3>
+    <h3 class="name_card">{{ props.name }}</h3>
     <div class="container_buttons flex">
       <button
         @click="[addToPokemonSelected(props.id), checkedStatus()]"
         v-if="addStatus"
-        class="button_add">Add</button>
+        class="button_add"
+      >
+        Add
+      </button>
       <button
         @click="[removePokemonSelected(props.index), checkedStatus()]"
-        v-else 
-        class="button_remove">Remover</button>
-      
-      <button class="button_info"
-        @click="() => TogglePopup('buttonTrigger')"
-        >Info</button>
-        <Popup 
-          v-if="popupTriggers.buttonTrigger"
-          :TogglePopup="() => TogglePopup('buttonTrigger')"
-          >
-          <DetailPokemon 
-            :id="props.id"
-            :name="props.name"
-            />
-        </Popup>
+        v-else
+        class="button_remove"
+      >
+        Remover
+      </button>
+
+      <button class="button_info" @click="() => TogglePopup('buttonTrigger')">
+        Info
+      </button>
+      <Popup
+        v-if="popupTriggers.buttonTrigger"
+        :TogglePopup="() => TogglePopup('buttonTrigger')"
+      >
+        <DetailPokemon :id="props.id" :name="props.name" />
+      </Popup>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-import { useStore } from "vuex"
-import { computed, defineProps, ref, watch } from "vue"
-import Popup from "./Popup.vue"
-import DetailPokemon from "./DetailPokemon.vue"
-import axios from "axios"
+import { useStore } from "vuex";
+import { computed, defineProps, ref, watch } from "vue";
+import Popup from "./Popup.vue";
+import DetailPokemon from "./DetailPokemon.vue";
+import axios from "axios";
 
-const store = useStore()
-const addStatus = ref(true)
+const store = useStore();
+const addStatus = ref(true);
 const popupTriggers: any = ref({
-  buttonTrigger: false
-})
+  buttonTrigger: false,
+});
 
 const TogglePopup: any = (trigger: string): any => {
-  popupTriggers.value[trigger] = !popupTriggers.value[trigger]
-}
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+};
 const props: any = defineProps({
-   name: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
-    index: {
-      type: Number,
-      required: true
-    }
-})
+  name: {
+    type: String,
+    required: true,
+  },
+  id: {
+    type: String,
+    required: true,
+  },
+  index: {
+    type: Number,
+    required: true,
+  },
+});
 
-function showPokemon (id: any) {
-   store.dispatch('getDetailsPokemons', id)
+function showPokemon(id: any) {
+  store.dispatch("getDetailsPokemons", id);
 }
 
 function addToPokemonSelected(id: any) {
-  store.commit('addPokemons', store.state.pokemons[id -1])
+  store.commit("addPokemons", store.state.pokemons[id - 1]);
 }
 
 function checkedStatus() {
-  addStatus.value = !addStatus.value
+  addStatus.value = !addStatus.value;
 }
 
-function removePokemonSelected(id:number) {
-  store.commit('deletePokemonTeamSelected', id)
+function removePokemonSelected(id: number) {
+  store.commit("deletePokemonTeamSelected", id);
 }
 </script>
 <style>
@@ -85,7 +89,7 @@ function removePokemonSelected(id:number) {
   padding: 1rem;
 }
 
-.container_id_card{
+.container_id_card {
   margin: 5px;
   padding: 0 7px;
   border: 1px solid #484848;
@@ -100,7 +104,7 @@ function removePokemonSelected(id:number) {
   border-radius: 0.5rem;
   width: 13rem;
   height: 16rem;
-  background-color: #E3E6E9;
+  background-color: #e3e6e9;
   margin: 1rem;
 }
 
@@ -119,7 +123,7 @@ function removePokemonSelected(id:number) {
   border-radius: 1rem;
   padding: 4px;
   width: 3rem;
-  background-color: #1AAE9F;
+  background-color: #1aae9f;
   color: #fff;
   box-shadow: 1px 1px 5px #484848;
 }
@@ -129,7 +133,7 @@ function removePokemonSelected(id:number) {
   border-radius: 1rem;
   padding: 4px;
   width: 4rem;
-  background-color: #D3455B;
+  background-color: #d3455b;
   color: #fff;
   box-shadow: 1px 1px 5px #484848;
 }
@@ -147,13 +151,12 @@ function removePokemonSelected(id:number) {
 .button_info:hover {
   background-color: #042c9b;
   color: #fff;
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .button_add:hover {
   background-color: #039e3e;
   color: #fff;
-  transition: .5s;
+  transition: 0.5s;
 }
-
 </style>

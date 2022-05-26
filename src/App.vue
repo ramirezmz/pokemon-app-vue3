@@ -4,9 +4,9 @@
     <router-view></router-view>
   </body>
 </template>
-<script setup lang="ts">
-import Header from './components/Header.vue';
-import HomeVue from './pages/HomeVue.vue';
+<script lang="ts" setup>
+import Header from "./components/Header.vue"
+import HomeVue from "./pages/HomeVue.vue"
 </script>
 <style>
 /* reset */
@@ -16,7 +16,7 @@ import HomeVue from './pages/HomeVue.vue';
   list-style: none;
   text-decoration: none;
   border: none;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 /* flexbox */
 .flex {
@@ -28,5 +28,4 @@ import HomeVue from './pages/HomeVue.vue';
 .column {
   flex-direction: column;
 }
-
 </style>

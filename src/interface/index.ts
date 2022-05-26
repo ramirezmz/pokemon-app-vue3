@@ -5,7 +5,7 @@ interface Pokemon {
     ability: {
       name: string;
       url: string;
-    }
+    };
   }[];
   stats: {
     base_stat: number;
@@ -13,6 +13,6 @@ interface Pokemon {
     stat: {
       name: string;
       url: string;
-    }
-  }[]
+    };
+  }[];
 }

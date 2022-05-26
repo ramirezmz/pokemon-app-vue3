@@ -1,25 +1,22 @@
 <template>
-   <div class="popup">
-      <div class="popup_inner">
-         <slot />
-         <button class="button_remove" @click="props.TogglePopup()">
-            Close
-         </button>
-      </div>
-   </div>
+  <div class="popup">
+    <div class="popup_inner">
+      <slot />
+      <button class="button_remove" @click="props.TogglePopup()">Close</button>
+    </div>
+  </div>
 </template>
-<script lang="ts" setup>
-import {defineProps} from 'vue'
+<script  lang="ts" setup>
+import { defineProps } from "vue";
 
 const props: any = defineProps({
-   TogglePopup: {
-      required: true 
-   }
-})
-
+  TogglePopup: {
+    required: true,
+  },
+});
 </script>
 <style scoped>
-.popup{
+.popup {
   position: fixed;
   top: 0;
   left: 0;
@@ -31,8 +28,8 @@ const props: any = defineProps({
   align-items: center;
   justify-content: center;
 }
-.popup_inner{
-   background: #fff;
-   padding: 32px;
+.popup_inner {
+  background: #fff;
+  padding: 32px;
 }
 </style>

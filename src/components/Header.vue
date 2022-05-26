@@ -5,9 +5,11 @@
     </router-link>
   </header>
 </template>
+<script lang="ts" setup>
+</script>
 <style>
 .cabecalho {
-  background-color: #4B5C6B;
+  background-color: #4b5c6b;
   text-align: center;
   padding: 1rem;
 }
