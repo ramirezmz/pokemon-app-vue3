@@ -5,16 +5,13 @@
       <PokemonFace />
     </div>
     <div class="container">
-      <div
-        v-for="(pokemon, index) in pokemons"
-        class="container_cards"
-        :key="index"
-      >
+      <div v-for="(pokemon, index) in pokemons"
+        class="container_cards" :key="index">
         <Card
           :name="pokemon.name"
-          :id="getId(pokemon)"
+          :id="pokemon.url.split('/')[6]"
           :pokemons="pokemons"
-          :details="getDetailsData(getId(pokemon))"
+          :details="getDetailsData(pokemon.url.split('/')[6])"
           :index="index"
         />
       </div>
@@ -25,20 +22,13 @@
 import SetTeamName from "../components/SetTeamName.vue";
 import Card from "../components/Card.vue";
 import { useStore } from "vuex";
-import { ref, onBeforeMount, reactive } from "vue";
+import { computed } from "vue";
 import DetailPokemon from "../components/DetailPokemon.vue";
 import axios from "axios";
 import PokemonFace from "../components/PokemonFace.vue";
 
-const store = useStore();
-let pokemons: any = reactive([]);
-
-store.dispatch("getAllPokemons", [50, 0]);
-pokemons = store.state.pokemons;
-
-const getId = (pokemons: any) => {
-        return pokemons.url.split("/")[6];
-}
+const store = useStore()
+const pokemons = computed(() => store.state.pokemons)
 
 const getDetailsData = (id: Number) => {
   store.dispatch("getDetailsPokemons", id)
