@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import api from "../api";
 import VuexPersistence from "vuex-persist";
 
+
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,
 });
@@ -76,5 +77,5 @@ export default createStore({
       context.commit("generateIdTeam");
     },
   },
-  modules: {},
+  plugins: [vuexLocal.plugin],
 });

@@ -15,7 +15,7 @@ const store = useStore();
 const nameTeam = ref("");
 const router = useRouter();
 
-function saveTeam(value: string) {
+const saveTeam = (value: string) => {
   if (value == "") {
     window.alert("Você precisa colocar um nome ao seu time...");
   } else if (store.state.team.pokemonsChoosed.length === 0) {

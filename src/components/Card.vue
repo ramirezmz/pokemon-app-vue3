@@ -68,19 +68,19 @@ const props: any = defineProps({
   },
 });
 
-function showPokemon(id: any) {
+const showPokemon = (id: any) => {
   store.dispatch("getDetailsPokemons", id);
 }
 
-function addToPokemonSelected(id: any) {
+const addToPokemonSelected = (id: any) => {
   store.commit("addPokemons", store.state.pokemons[id - 1]);
 }
 
-function checkedStatus() {
+const checkedStatus = () => {
   addStatus.value = !addStatus.value;
 }
 
-function removePokemonSelected(id: number) {
+const removePokemonSelected = (id: number) => {
   store.commit("deletePokemonTeamSelected", id);
 }
 </script>
