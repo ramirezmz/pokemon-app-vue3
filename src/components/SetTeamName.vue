@@ -14,7 +14,6 @@ import { useRouter } from "vue-router";
 const store = useStore();
 const nameTeam = ref("");
 const router = useRouter();
-
 const saveTeam = (value: string) => {
   if (value == "") {
     window.alert("Você precisa colocar um nome ao seu time...");
@@ -25,6 +24,8 @@ const saveTeam = (value: string) => {
     store.dispatch("getEventId");
     store.commit("fullTeam", store.state.team);
     router.push("gerenciamento");
+    store.commit("generateIdTeam", Date.now())
+    console.log(store.state.team)
   }
   store.commit("cleanTeam");
 }

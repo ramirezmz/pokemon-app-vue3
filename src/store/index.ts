@@ -23,7 +23,7 @@ export default createStore({
     addPokemons(state: any, payload: any): any {
       state.team.pokemonsChoosed.push(payload);
     },
-        addUserToState(state, payload): any {
+    addUserToState(state, payload): any {
       state.team.name = payload;
     },
     setPokemons(state, payload): void {
@@ -32,8 +32,8 @@ export default createStore({
     setDetailsPokemons(state, payload: any): void {
       state.detailPokemon.push(payload);
     },
-    generateIdTeam(state: any): void {
-      state.team.id = Math.floor(Math.random() * 100);
+    generateIdTeam(state, idTeam): void {
+      state.team.id = idTeam;
     },
     fullTeam(state: any, payload: any): void {
       state.teamList.push(payload);

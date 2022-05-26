@@ -10,20 +10,10 @@
     </div>
     <h3 class="name_card">{{ props.name }}</h3>
     <div class="container_buttons flex">
-      <button
-        @click="[addToPokemonSelected(props.id), checkedStatus()]"
-        v-if="addStatus"
-        class="button_add"
-      >
-        Add
-      </button>
-      <button
-        @click="[removePokemonSelected(props.index), checkedStatus()]"
-        v-else
-        class="button_remove"
-      >
-        Remover
-      </button>
+      <button @click="addToPokemonSelected(props.id)"
+        v-if="addStatus" class="button_add">Add</button>
+      <button @click="removePokemonSelected(1)"
+        v-else class="button_remove">Remover</button>
 
       <button class="button_info" @click="() => TogglePopup('buttonTrigger')">
         Info
@@ -39,20 +29,13 @@
 </template>
 <script lang="ts" setup>
 import { useStore } from "vuex";
-import { computed, defineProps, ref, watch } from "vue";
+import { defineProps, ref } from "vue";
 import Popup from "./Popup.vue";
 import DetailPokemon from "./DetailPokemon.vue";
 import axios from "axios";
 
 const store = useStore();
 const addStatus = ref(true);
-const popupTriggers: any = ref({
-  buttonTrigger: false,
-});
-
-const TogglePopup: any = (trigger: string): any => {
-  popupTriggers.value[trigger] = !popupTriggers.value[trigger];
-};
 const props: any = defineProps({
   name: {
     type: String,
@@ -61,26 +44,32 @@ const props: any = defineProps({
   id: {
     type: String,
     required: true,
-  },
-  index: {
-    type: Number,
-    required: true,
-  },
+  }
 });
+const popupTriggers: any = ref({
+  buttonTrigger: false,
+});
+
+const TogglePopup = (trigger: string) => {
+  popupTriggers.value[trigger] = !popupTriggers.value[trigger];
+};
 
 const showPokemon = (id: any) => {
   store.dispatch("getDetailsPokemons", id);
 }
 
 const addToPokemonSelected = (id: any) => {
-  store.commit("addPokemons", store.state.pokemons[id - 1]);
-}
-
-const checkedStatus = () => {
-  addStatus.value = !addStatus.value;
+  if(store.state.team.pokemonsChoosed.length <= 2) {
+    store.commit("addPokemons", store.state.pokemons[id - 1]);
+    addStatus.value = !addStatus.value
+  } else {
+    window.alert('Voce ja escolheu 3 pokemons!')
+    addStatus.value = addStatus.value
+  }
 }
 
 const removePokemonSelected = (id: number) => {
+  addStatus.value = !addStatus.value
   store.commit("deletePokemonTeamSelected", id);
 }
 </script>
