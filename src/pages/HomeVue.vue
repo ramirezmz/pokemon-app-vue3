@@ -12,7 +12,7 @@ const store = useStore();
 
 const startPokemons = () => {
   if(!store.state.pokemons.length) {
-    store.dispatch("getAllPokemons", [10, 0]);
+    store.dispatch("getAllPokemons", [100, 0]);
     console.log('Chamada a a API Pokemon')
   } else {
     console.log('Já foi realizado o chamado')
