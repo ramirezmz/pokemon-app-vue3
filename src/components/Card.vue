@@ -12,7 +12,7 @@
     <div class="container_buttons flex">
       <button @click="addToPokemonSelected(props.id)"
         v-if="addStatus" class="button_add">Add</button>
-      <button @click="removePokemonSelected(1)"
+      <button @click="removePokemonSelected(props.name)"
         v-else class="button_remove">Remover</button>
       <button class="button_info" @click="TogglePopup('buttonTrigger', props.id)">
         Info
@@ -70,9 +70,9 @@ const addToPokemonSelected = (id: any) => {
   }
 }
 
-const removePokemonSelected = (id: number) => {
+const removePokemonSelected = (pokemonName: string) => {
   addStatus.value = !addStatus.value
-  store.commit("deletePokemonTeamSelected", id);
+  store.commit("deletePokemonTeamSelected", pokemonName);
 }
 </script>
 <style>

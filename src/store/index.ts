@@ -49,13 +49,11 @@ export default createStore({
       state.teamList.splice(payload, 1);
     },
     deletePokemonTeamSelected(state, payload) {
-      console.log(state.team.pokemonsChoosed.splice(payload, 1));
-      console.log(payload);
-      console.log(state.team.pokemonsChoosed);
+      state.team.pokemonsChoosed = state.team.pokemonsChoosed.filter((pokemon: any) => pokemon.name !== payload)
     },
     editTeam(state, teamId) {
-      Object.assign(state.team, state.teamList[teamId]);
-      console.log(state.team);
+      Object.assign(state.team, teamId);
+      console.log(state.team)
     },
   },
   actions: {
@@ -77,5 +75,5 @@ export default createStore({
       context.commit("generateIdTeam");
     },
   },
-  plugins: [vuexLocal.plugin],
+  // plugins: [vuexLocal.plugin],
 });

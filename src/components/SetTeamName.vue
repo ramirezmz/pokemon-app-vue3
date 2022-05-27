@@ -2,7 +2,8 @@
   <div class="formulario_container flex">
     <form class="formulario_nome_time flex">
       <label for="nome_time">Digite o nome do time: </label>
-      <input class="nome_time_input" v-model="nameTeam" />
+      {{store.state.team.name}}
+      <input class="nome_time_input" v-model="nameTeam" placeholder="Digite seu nome aqui..."/>
     </form>
     <button class="button_salvar" @click="[saveTeam(nameTeam)]">Salvar</button>
   </div>

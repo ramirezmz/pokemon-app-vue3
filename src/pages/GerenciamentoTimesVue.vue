@@ -28,7 +28,7 @@
           </div>
         </td>
         <td class="tabela_botoes">
-          <router-link to="/">
+          <router-link to="/choose">
             <button class="button_editar" @click="editTeam(index)">
               EDITAR
             </button>
@@ -52,7 +52,9 @@ const deleteSavedTeam = (user: number) => {
   store.commit("deleteSavedTeam", user);
 };
 
-const editTeam = (teamId: any) => store.commit("editTeam", teamId);
+const editTeam = (teamId: any) => {
+  store.commit("editTeam", store.state.teamList[teamId])
+}
 </script>
 
 <style>
