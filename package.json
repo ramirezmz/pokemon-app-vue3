@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "axios": "0.26.1",
-    "uuidv4": "6.2.13",
     "vue": "3.2.25",
     "vue-router": "4",
     "vuex": "4.0.2",
