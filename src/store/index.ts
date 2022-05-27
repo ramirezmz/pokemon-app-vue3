@@ -53,7 +53,6 @@ export default createStore({
     },
     editTeam(state, teamId) {
       Object.assign(state.team, teamId);
-      console.log(state.team)
     },
   },
   actions: {

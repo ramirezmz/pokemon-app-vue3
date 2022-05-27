@@ -19,7 +19,7 @@
       </button>
       <Popup
         v-if="popupTriggers.buttonTrigger"
-        :TogglePopup="() => TogglePopup('buttonTrigger')">
+        :TogglePopup="() => TogglePopup('buttonTrigger', props.id)">
         <DetailPokemon
           :id="props.id"
           :name="props.name"/>
@@ -53,7 +53,6 @@ const popupTriggers: any = ref({
 const TogglePopup = (trigger: string, id: number) => {
   popupTriggers.value[trigger] = !popupTriggers.value[trigger];
   const detailPokemon = store.state.detailPokemon[id - 1]
-  console.log(detailPokemon)
 };
 
 const showPokemon = (id: any) => {
