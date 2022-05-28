@@ -1,5 +1,5 @@
 <template>
-  <table class="tabela table">
+  <table class="table">
     <thead class="tabela_cabecalho">
       <tr class="tabela_linha">
         <td class="tabela_categoria" scope="col">ID</td>
@@ -58,6 +58,10 @@ const editTeam = (teamId: any) => {
 </script>
 
 <style>
+table {
+  margin-top: 5rem;
+  background-color: #0bbd40;
+}
 th,
 td {
   font-weight: unset;

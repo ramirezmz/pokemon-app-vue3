@@ -32,6 +32,10 @@ const getDetailsData = (id: Number) => {
 }
 </script>
 <style>
+.container_head {
+  padding-top: 50px;
+}
+
 .container_cards {
   float: left;
 }
