@@ -6,7 +6,6 @@
 </template>
 <script lang="ts" setup>
 import Header from "./components/Header.vue"
-import HomeVue from "./pages/HomeVue.vue"
 </script>
 <style>
 /* reset */

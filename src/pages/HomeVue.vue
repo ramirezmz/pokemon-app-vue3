@@ -1,15 +1,12 @@
 <template>
-  <div class="container_home flex">
-    <img class="image_person" src="../assets/ash.png" alt="ash and pikachu">
-    <div class="container_text">
-      <h1>POKEMON CRUD</h1>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-      <div class="container_button">
-        <router-link class="button_start" to="/choose" @click="startPokemons()">Bora comecar!?</router-link>
-      </div>
+  <header>
+    <div class="container_home">
+    <h2>Escolhe teus proprios pokemons</h2>
+    <div class="line"></div>
+    <h1>POKEMON CRUD</h1>
+      <router-link class="button_start" to="/choose" @click="startPokemons()">Bora comecar!?</router-link>
     </div>
-
-  </div>
+  </header>
 </template>
 <script lang="ts" setup>
 import { useStore } from 'vuex';
@@ -26,20 +23,39 @@ const startPokemons = () => {
 }
 </script>
 <style scoped>
-.container_home {
+header {
+  width: 100vw;
+  height: 100vh;
   background-image: url("../../public/pokemon_bg.png");
-  background-size: contain;
-}
-.image_person{
-  max-width: 10rem;
-  transition: max-width 100ms ease-in-out;
-  padding-right: 1rem;
-}
-
-.image_person:hover {
-  max-width: 10.5rem;
+  background-position: bottom;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.container_home {
+  color: #304D63;
+  text-align: center;
+  margin-bottom: 150px;
+}
+.container_home h2 {
+  font-size: 4vmin;
+}
+
+.line {
+  width: 150px;
+  height: 4px;
+  background: #ED8975;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.container_home h1 {
+  font-size: 7vmin;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
 .container_text {
   max-width: 30rem;
   padding: 5rem;
@@ -56,7 +72,7 @@ const startPokemons = () => {
   border-radius: 50px;
   border: none;
   outline: none;
-  background: #111;
+  background: #304D63;
   color: #fff;
   font-size: 20px;
   letter-spacing: 1px;
@@ -67,7 +83,7 @@ const startPokemons = () => {
 }
 
 .button_start:hover {
-  background: linear-gradient(90deg, #03a9f4, #f331a5, #ffeb3b, #03a9f4);
+  background: linear-gradient(90deg, #B2e7E8, #8FB9AA, #F2D096, #ED8975, #B2e7E8);
   background-size: 400%;
 }
 
