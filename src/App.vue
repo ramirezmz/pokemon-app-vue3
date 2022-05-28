@@ -28,4 +28,5 @@ import HomeVue from "./pages/HomeVue.vue"
 .column {
   flex-direction: column;
 }
+
 </style>
