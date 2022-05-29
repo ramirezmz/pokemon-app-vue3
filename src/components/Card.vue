@@ -113,7 +113,7 @@ const removePokemonSelected = (pokemonName: string) => {
   border-radius: 1rem;
   padding: 4px;
   width: 3rem;
-  background-color: #1aae9f;
+  background-color: #65c0a0;
   color: #fff;
   box-shadow: 1px 1px 5px #484848;
 }
@@ -123,7 +123,7 @@ const removePokemonSelected = (pokemonName: string) => {
   border-radius: 1rem;
   padding: 4px;
   width: 4rem;
-  background-color: #d3455b;
+  background-color: #ED8975;
   color: #fff;
   box-shadow: 1px 1px 5px #484848;
 }

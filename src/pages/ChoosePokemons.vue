@@ -32,6 +32,9 @@ const getDetailsData = (id: Number) => {
 }
 </script>
 <style>
+body {
+  background-image: url("../../public/pokemon_bg_battle.png");
+}
 .container_head {
   padding-top: 50px;
 }
@@ -43,6 +46,7 @@ const getDetailsData = (id: Number) => {
 .container {
   margin: auto;
 }
+
 .input-search {
   background-color: aqua;
 }
